@@ -3,11 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+
+const cors = require ("cors");
 const mongoose = require ('mongoose');
 mongoose
-.connect('mongodb+srv://admin:adminadmin@cluster0.euyutkh.mongodb.net/mongost?retryWrites=true&w=majority')
+.connect('mongodb+srv://admin:adminadmin@cluster0.2hsbuxk.mongodb.net/?retryWrites=true&w=majority')
 .then(() => console.log("database connected"))
 .catch((err) => console.log(err))
+
 
 
 var indexRouter = require('./routes/index');
@@ -15,6 +18,7 @@ var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products')
 
 var app = express();
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
